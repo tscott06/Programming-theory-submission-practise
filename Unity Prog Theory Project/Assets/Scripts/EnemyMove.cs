@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    [SerializeField]
+    
     protected GameObject Player;
 
     public float speed = 3.0f;
@@ -19,6 +19,7 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         enemyRb = GetComponent<Rigidbody>();
 
     }
@@ -53,7 +54,7 @@ public class EnemyMove : MonoBehaviour
 
         thisPlayerHealth.ChangeHealth(-damage);
 
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,7 +70,7 @@ public class EnemyMove : MonoBehaviour
     public virtual void TakeDamage()
     {
         
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         
     }
 

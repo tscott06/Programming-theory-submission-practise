@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
         halfHealth,
     }
 
-
+    [SerializeField]
     private int _maxHealth = 10;
     public int maxHealth
     {
@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
-
+    [SerializeField]
     private int _health = 10;
     public int health
     {
@@ -28,17 +28,7 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+  
 
     //Helath overloaded
     /// <summary>
@@ -51,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
         _health += health;
 
         UIManager.UpdateHealth();
+        CheckIfDead();
 
     }
 
@@ -71,6 +62,7 @@ public class PlayerHealth : MonoBehaviour
 
         UIManager.UpdateHealth();
 
+        CheckIfDead();
     }
 
     public void ChangeMaxHealth(int amount)
@@ -78,8 +70,21 @@ public class PlayerHealth : MonoBehaviour
         _maxHealth += amount;
 
         UIManager.UpdateHealth();
+
+        CheckIfDead();
     }
 
 
+    private void CheckIfDead()
+    {
+        if(health <= 0)
+        {
+            Destroy(gameObject.GetComponent<PlayerMovement>());
 
+            
+
+            UIManager.GameOver();
+
+        }
+    }
 }

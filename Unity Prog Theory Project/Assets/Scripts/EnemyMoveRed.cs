@@ -10,12 +10,7 @@ public class EnemyMoveRed : EnemyMove
     [SerializeField]
     private float shrinkBy = 2.0f;
 
-    // Update is called once per frame
-    void Start()
-    {
-        enemyRb = GetComponent<Rigidbody>();       
-    }
-
+ 
 
 
     public override void TakeDamage()

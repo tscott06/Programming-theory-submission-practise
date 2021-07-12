@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
    
+    private static TextMeshProUGUI[] uiTexts = new TextMeshProUGUI[2];
     private static TextMeshProUGUI healthText;
+    private static TextMeshProUGUI gameOverText;
 
     private static PlayerHealth playerHealth;
 
@@ -16,21 +18,25 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        uiTexts = gameObject.GetComponentsInChildren<TextMeshProUGUI>(true);
+        healthText = uiTexts[0];
+        gameOverText = uiTexts[1];
+
 
         playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
 
         UpdateHealth();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     public static void UpdateHealth()
     {
         healthText.text = "Health : " + playerHealth.health + " out of " + playerHealth.maxHealth;
+    }
+
+    public static void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
     }
 }

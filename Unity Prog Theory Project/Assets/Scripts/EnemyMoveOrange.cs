@@ -8,11 +8,7 @@ public class EnemyMoveOrange : EnemyMove
     private float knockbackSpeed = 75.0f;
 
 
-    // Update is called once per frame
-    void Start()
-    {
-        enemyRb = GetComponent<Rigidbody>();       
-    }
+   
 
     public override void MoveEnemy()
     {
